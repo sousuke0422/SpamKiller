@@ -26,7 +26,7 @@ async def main():
     # 適宜IDは変えること
     note = await api.note.action.get('818dcf70d5d8fcec90f711a8')
     print(note.user.name, note.text)
-    if note.user.host != None and len(note.mentions) >= 2:
+    if note.user.host and len(note.mentions) >= 2:
         logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
         # print(len(note.mentions))
         # print(note.user.username, note.text)

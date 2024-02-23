@@ -34,7 +34,7 @@ class SpamKiller(Bot):
         await self._connect_channel()
 
     async def on_note(self, note: Note):
-        if note.user.host != None and len(note.mentions) >= 2:
+        if note.user.host and len(note.mentions) >= 2:
             logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
             # print(len(note.mentions))
             # print(note.user.username, note.text)
