@@ -2,8 +2,8 @@ from loguru import logger
 from mipac import Note
 from mipac.client import ClientManager
 
-from punycode import convert_punycode_to_unicode
-from type import TTarget
+from src.punycode import convert_punycode_to_unicode
+from src.type import TTarget
 
 
 def text_helper(note_text: str) -> str:
@@ -21,10 +21,10 @@ async def spam_action(note: Note, client: ClientManager, target: TTarget) -> Non
             await client.drive.files.action.delete(file_id=i)
             logger.info(f'{note.id} のファイル {i} を削除しました。')
 
-        fu = await client.user.action.get(note.user.id)
+        found_user = await client.user.action.get(note.user.id)
         # 傾向が変わった際に変更
-        if len(fu.username) == 10:
-            await fu.api.admin.action.suspend()
+        if len(found_user.username) == 10:
+            await found_user.api.admin.action.suspend()
             logger.success(f'@{note.user.username}@{note.user.host} suspend ❄')
         else:
             logger.success(f'@{note.user.username}@{note.user.host} hit user ⚠️')

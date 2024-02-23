@@ -5,9 +5,9 @@ from loguru import logger
 from mipa import Note
 from mipa.ext.commands.bot import Bot
 
-from env import HOST, TOKEN
-from func import spam_action, text_helper
-from target import TARGETS
+from src.env import URL, TOKEN
+from src.func import spam_action, text_helper
+from src.target import TARGETS
 
 
 class SpamKiller(Bot):
@@ -27,7 +27,7 @@ class SpamKiller(Bot):
 
     async def on_note(self, note: Note):
         if note.user.host and len(note.mentions) >= 2:
-            logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
+            logger.info(f'スパムチェック開始: {URL}/notes/{note.id}')
 
             for target in TARGETS:
                 if note.text is None:
@@ -38,13 +38,11 @@ class SpamKiller(Bot):
                     logger.success(f'パターン一致: {target['key']}')
                     await spam_action(note, self.client, target)
                 elif len(note.user.username) == 10:
-                    logger.warning(f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️')
-
-
-            # if note.file_ids is not 0:
-            #    logger.error('画像チェック機能は未実装')
+                    logger.warning(
+                        f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️'
+                    )
 
 
 if __name__ == '__main__':
     bot = SpamKiller()
-    asyncio.run(bot.start(f'wss://{HOST}/streaming', TOKEN))
+    asyncio.run(bot.start(f'{URL}', TOKEN))

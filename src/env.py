@@ -16,8 +16,8 @@ def get_env(key: str) -> str:
     return value
 
 
-HOST = get_env('HOST')
+URL = get_env('URL')
 TOKEN = get_env('TOKEN')
 
 
-logger.info(f'use: {HOST}')
+logger.info(f'use: {URL}')

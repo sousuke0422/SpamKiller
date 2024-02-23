@@ -1,4 +1,4 @@
-from type import TTarget
+from src.type import TTarget
 
 TARGETS: list[TTarget] = [
     {'key': 'ctkpaarr', 'count': 0, 'dry_run': False},

@@ -7,5 +7,5 @@ python -m venv .venv
 pip install -r requirements.txt
 # コンフィグを用意
 
-python src/main.py
+python main.py
 ```
