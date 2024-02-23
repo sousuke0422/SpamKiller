@@ -38,7 +38,6 @@ async def main():
             if target['key'] in text:
                 logger.success(f'パターン一致 {target['key']}')
                 await spam_action(note, api, target)
-                continue
 
 if __name__ == '__main__':
     asyncio.run(main())
