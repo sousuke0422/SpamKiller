@@ -13,7 +13,7 @@ from src.target import TARGETS
 
 
 async def main():
-    client = Client(f'https://{HOST}', TOKEN)
+    client = Client(URL, TOKEN)
     await client.http.login()
     api = client.api
     me = await api.get_me()
@@ -28,7 +28,7 @@ async def main():
     logger.info(f'User: @{note.user.username}@{note.user.host}')
     logger.info(f'Context: {note.text}')
     if note.user.host and len(note.mentions) >= 2:
-        logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
+        logger.info(f'スパムチェック開始: {URL}/notes/{note.id}')
 
         for target in TARGETS:
             if note.text is None:
