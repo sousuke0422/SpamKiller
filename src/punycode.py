@@ -1,5 +1,5 @@
 import re
-from idna import encode, decode
+from idna import decode
 
 # use chatgpt
 # 書き直したいけど、動いてるので `触らぬ神に祟りなし`

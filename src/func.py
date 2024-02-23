@@ -1,4 +1,3 @@
-import asyncio
 from loguru import logger
 from punycode import convert_punycode_to_unicode
 from type import TTarget
