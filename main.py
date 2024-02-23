@@ -5,9 +5,9 @@ from loguru import logger
 from mipa import Note
 from mipa.ext.commands.bot import Bot
 
-from env import HOST, TOKEN
-from func import spam_action, text_helper
-from target import TARGETS
+from src.env import URL, TOKEN
+from src.func import spam_action, text_helper
+from src.target import TARGETS
 
 
 class SpamKiller(Bot):

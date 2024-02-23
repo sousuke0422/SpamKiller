@@ -7,9 +7,9 @@ import asyncio
 from loguru import logger
 from mipac.client import Client
 
-from env import HOST, TOKEN
-from func import spam_action, text_helper
-from target import TARGETS
+from src.env import URL, TOKEN
+from src.func import spam_action, text_helper
+from src.target import TARGETS
 
 
 async def main():
