@@ -32,6 +32,7 @@ class SpamKiller(Bot):
 
     async def on_reconnect(self, ws: ClientWebSocketResponse):
         await self._connect_channel()
+        logger.info('再接続しました')
 
     async def on_note(self, note: Note):
         if note.user.host != None and len(note.mentions) >= 2:
@@ -41,9 +42,11 @@ class SpamKiller(Bot):
             for target in targets:
                 text = text_helper(note.text)
                 if target['key'] in text:
-                    logger.success(f'パターン一致 {target['key']}')
+                    logger.success(f'パターン一致: {target['key']}')
                     await spam_action(note, self.client, target)
-                    continue
+                elif len(await note.user.username) == 10:
+                    logger.warning(f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️')
+
 
             #if note.file_ids is not 0:
             #    logger.error('画像チェック機能は未実装')

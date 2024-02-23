@@ -24,8 +24,9 @@ async def main():
     me = await api.get_me()
     logger.success(f'Logged in: {me.username}')
     # 適宜IDは変えること
-    note = await api.note.action.get('818dcf70d5d8fcec90f711a8')
-    print(note.user.name, note.text)
+    note = await api.note.action.get('818dc51224484a230a100a9f')
+    logger.info(f'User: @{note.user.username}@{note.user.host}')
+    logger.info(f'Context: {note.text}')
     if note.user.host != None and len(note.mentions) >= 2:
         logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
         # print(len(note.mentions))
@@ -33,9 +34,10 @@ async def main():
         for target in targets:
             text = text_helper(note.text)
             if target['key'] in text:
-                logger.success(f'パターン一致 {target['key']}')
+                logger.success(f'パターン一致: {target['key']}')
                 await spam_action(note, api, target)
-                continue
+            elif len(note.user.username) == 10:
+                logger.warning(f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️')
 
 if __name__ == '__main__':
     asyncio.run(main())
