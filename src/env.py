@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: sousuke0422 and All Contributor
+# SPDX-License-Identifier: MIT
+
 from os import environ
 from os.path import dirname, join
 

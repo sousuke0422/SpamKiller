@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: sousuke0422 and All Contributor
+# SPDX-License-Identifier: MIT
+
 from loguru import logger
 from mipac import Note
 from mipac.client import ClientManager

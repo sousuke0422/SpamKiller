@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: sousuke0422 and All Contributor
+# SPDX-License-Identifier: MIT
+
 from src.type import TTarget
 
 TARGETS: list[TTarget] = [

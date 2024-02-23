@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: sousuke0422 and All Contributor
+# SPDX-License-Identifier: MIT
+
 import re
 
 from idna import decode
