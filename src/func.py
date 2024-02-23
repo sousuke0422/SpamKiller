@@ -2,8 +2,8 @@ from loguru import logger
 from mipac import Note
 from mipac.client import ClientManager
 
-from punycode import convert_punycode_to_unicode
-from type import TTarget
+from src.punycode import convert_punycode_to_unicode
+from src.type import TTarget
 
 
 def text_helper(note_text: str) -> str:
