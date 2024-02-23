@@ -1,17 +1,17 @@
-import asyncio
 from loguru import logger
-from punycode import convert_punycode_to_unicode
-from type import TTarget
-
 from mipac import Note
 from mipac.client import ClientManager
+
+from punycode import convert_punycode_to_unicode
+from type import TTarget
 
 
 def text_helper(note_text: str) -> str:
     if note_text not in 'xn--':
         return note_text
     else:
-        return convert_punycode_to_unicode(text_helper)
+        return convert_punycode_to_unicode(note_text)
+
 
 async def spam_action(note: Note, client: ClientManager, target: TTarget) -> None:
     logger.info('fire 🔥')

@@ -1,30 +1,21 @@
 import asyncio
+
 from aiohttp import ClientWebSocketResponse
-
 from loguru import logger
-
 from mipa import Note
 from mipa.ext.commands.bot import Bot
+
 from env import HOST, TOKEN
-
 from func import spam_action, text_helper
-from type import TTarget
+from target import TARGETS
 
-
-
-targets: list[TTarget] = [
-        { 'key': 'ctkpaarr', 'count': 0, 'dry_run': False },
-        { 'key': '荒らし.com', 'count': 0, 'dry_run': False },
-        # { 'key': 'xn--68j5e377y.com', 'count': 0, 'dry_run': False },
-        { 'key': 'test', 'count': 0, 'dry_run': True}
-    ]
 
 class SpamKiller(Bot):
     def __init__(self):
         super().__init__()
 
     async def _connect_channel(self):
-      await self.router.connect_channel(['main', 'global'])
+        await self.router.connect_channel(['main', 'global'])
 
     async def on_ready(self, ws: ClientWebSocketResponse):
         await self._connect_channel()
@@ -35,11 +26,13 @@ class SpamKiller(Bot):
         logger.info('再接続しました')
 
     async def on_note(self, note: Note):
-        if note.user.host != None and len(note.mentions) >= 2:
+        if note.user.host and len(note.mentions) >= 2:
             logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
-            # print(len(note.mentions))
-            # print(note.user.username, note.text)
-            for target in targets:
+
+            for target in TARGETS:
+                if note.text is None:
+                    continue
+
                 text = text_helper(note.text)
                 if target['key'] in text:
                     logger.success(f'パターン一致: {target['key']}')
@@ -48,8 +41,9 @@ class SpamKiller(Bot):
                     logger.warning(f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️')
 
 
-            #if note.file_ids is not 0:
+            # if note.file_ids is not 0:
             #    logger.error('画像チェック機能は未実装')
+
 
 if __name__ == '__main__':
     bot = SpamKiller()

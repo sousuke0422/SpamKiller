@@ -1,22 +1,17 @@
-import asyncio
-from loguru import logger
-
-from mipac.client import Client
-from env import HOST, TOKEN
-from func import spam_action, text_helper
-
-from type import TTarget
-
-targets: list[TTarget] = [
-        { 'key': 'ctkpaarr', 'count': 0, 'dry_run': False },
-        { 'key': '荒らし.com', 'count': 0, 'dry_run': False },
-        # { 'key': 'xn--68j5e377y.com', 'count': 0, 'dry_run': False },
-        { 'key': 'test', 'count': 0, 'dry_run': True}
-    ]
-
 """
 手動実行
 """
+
+import asyncio
+
+from loguru import logger
+from mipac.client import Client
+
+from env import HOST, TOKEN
+from func import spam_action, text_helper
+from target import TARGETS
+
+
 async def main():
     client = Client(f'https://{HOST}', TOKEN)
     await client.http.login()
@@ -27,11 +22,13 @@ async def main():
     note = await api.note.action.get('818dc51224484a230a100a9f')
     logger.info(f'User: @{note.user.username}@{note.user.host}')
     logger.info(f'Context: {note.text}')
-    if note.user.host != None and len(note.mentions) >= 2:
+    if note.user.host and len(note.mentions) >= 2:
         logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
-        # print(len(note.mentions))
-        # print(note.user.username, note.text)
-        for target in targets:
+
+        for target in TARGETS:
+            if note.text is None:
+                continue
+
             text = text_helper(note.text)
             if target['key'] in text:
                 logger.success(f'パターン一致: {target['key']}')

@@ -1,5 +1,7 @@
 import re
-from idna import encode, decode
+
+from idna import decode
+
 
 # use chatgpt
 # 書き直したいけど、動いてるので `触らぬ神に祟りなし`
@@ -14,6 +16,7 @@ def convert_punycode_to_unicode(input_string: str) -> str:
 
     return input_string
 
-#input_string = "This is a punycode example: xn--fsq@xn--fsq.com"
-#converted_string = convert_punycode_to_unicode(input_string)
-#print(converted_string)
+
+# input_string = "This is a punycode example: xn--fsq@xn--fsq.com"
+# converted_string = convert_punycode_to_unicode(input_string)
+# print(converted_string)
