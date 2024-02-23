@@ -39,6 +39,9 @@ class SpamKiller(Bot):
             # print(len(note.mentions))
             # print(note.user.username, note.text)
             for target in targets:
+                if note.text is None:
+                    continue
+
                 text = text_helper(note.text)
                 if target['key'] in text:
                     logger.success(f'パターン一致 {target['key']}')
