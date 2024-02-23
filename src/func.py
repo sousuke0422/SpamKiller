@@ -10,7 +10,8 @@ def text_helper(note_text: str) -> str:
     if note_text not in 'xn--':
         return note_text
     else:
-        return convert_punycode_to_unicode(text_helper)
+        return convert_punycode_to_unicode(note_text)
+
 
 async def spam_action(note: Note, client: ClientManager, target: TTarget) -> None:
     logger.info('fire 🔥')
