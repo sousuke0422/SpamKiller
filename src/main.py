@@ -44,7 +44,7 @@ class SpamKiller(Bot):
                 if target['key'] in text:
                     logger.success(f'パターン一致: {target['key']}')
                     await spam_action(note, self.client, target)
-                elif len(await note.user.username) == 10:
+                elif len(note.user.username) == 10:
                     logger.warning(f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️')
 
 
