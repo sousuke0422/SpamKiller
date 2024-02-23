@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-TTarget = TypedDict('TTarget', {
-    'key': str,
-    'count': int,
-    'dry_run': bool
-})
+
+class TTarget(TypedDict):
+    key: str
+    count: int
+    dry_run: bool
