@@ -11,13 +11,13 @@ from func import spam_action, text_helper
 from type import TTarget
 
 
-
 targets: list[TTarget] = [
-        { 'key': 'ctkpaarr', 'count': 0, 'dry_run': False },
-        { 'key': '荒らし.com', 'count': 0, 'dry_run': False },
-        # { 'key': 'xn--68j5e377y.com', 'count': 0, 'dry_run': False },
-        { 'key': 'test', 'count': 0, 'dry_run': True}
-    ]
+    {'key': 'ctkpaarr', 'count': 0, 'dry_run': False},
+    {'key': '荒らし.com', 'count': 0, 'dry_run': False},
+    # { 'key': 'xn--68j5e377y.com', 'count': 0, 'dry_run': False },
+    {'key': 'test', 'count': 0, 'dry_run': True},
+]
+
 
 class SpamKiller(Bot):
     def __init__(self):
@@ -36,8 +36,7 @@ class SpamKiller(Bot):
     async def on_note(self, note: Note):
         if note.user.host and len(note.mentions) >= 2:
             logger.info(f'スパムチェック開始: https://{HOST}/notes/{note.id}')
-            # print(len(note.mentions))
-            # print(note.user.username, note.text)
+
             for target in targets:
                 if note.text is None:
                     continue
@@ -48,8 +47,9 @@ class SpamKiller(Bot):
                     await spam_action(note, self.client, target)
                     continue
 
-            #if note.file_ids is not 0:
+            # if note.file_ids is not 0:
             #    logger.error('画像チェック機能は未実装')
+
 
 if __name__ == '__main__':
     bot = SpamKiller()
