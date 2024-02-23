@@ -9,3 +9,9 @@ pip install -r requirements.txt
 
 python main.py
 ```
+
+チェンジログは`git-cliff`で生成してます
+
+```bash
+git cliff -o CHANGELOG.md
+```
