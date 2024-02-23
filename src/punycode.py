@@ -1,4 +1,5 @@
 import re
+
 from idna import decode
 
 
