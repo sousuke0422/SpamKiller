@@ -1,4 +1,4 @@
-# git-cliff ~ default configuration file
+# git-cliff ~ configuration file
 # https://git-cliff.org/docs/configuration
 #
 # Lines starting with "#" are comments.
@@ -9,6 +9,7 @@
 # changelog header
 header = """
 # Changelog\n
+All notable changes to this project will be documented in this file.\n
 """
 # template for the changelog body
 # https://keats.github.io/tera/docs/#introduction
@@ -23,7 +24,7 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }}\
+            {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]({{ commit.id }}))\
     {% endfor %}
 {% endfor %}\n
 """
