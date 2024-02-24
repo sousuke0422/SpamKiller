@@ -18,7 +18,7 @@ class SpamKiller(Bot):
         super().__init__()
 
     async def _connect_channel(self):
-        await self.router.connect_channel(['main', 'global'])
+        await self.router.connect_channel(['main', 'global', 'home'])
 
     async def on_ready(self, ws: ClientWebSocketResponse):
         await self._connect_channel()
