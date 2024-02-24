@@ -4,6 +4,7 @@
 from loguru import logger
 from mipac import Note
 from mipac.client import ClientManager
+from src.env import USER_ACTION
 
 from src.punycode import convert_punycode_to_unicode
 from src.type import TTarget
@@ -27,8 +28,15 @@ async def spam_action(note: Note, client: ClientManager, target: TTarget) -> Non
         found_user = await client.user.action.get(note.user.id)
         # 傾向が変わった際に変更
         if len(found_user.username) == 10:
-            await found_user.api.admin.action.suspend()
-            logger.success(f'@{note.user.username}@{note.user.host} suspend ❄')
+            match USER_ACTION:
+                case 'delete':
+                    await found_user.api.admin.action.delete_account()
+                    logger.success(f'@{note.user.username}@{note.user.host} delete 🗑')
+                case 'suspend':
+                    await found_user.api.admin.action.suspend()
+                    logger.success(f'@{note.user.username}@{note.user.host} suspend ❄')
+                case _:
+                    raise ValueError('USER_ACTION is not allow literal')
         else:
             logger.success(f'@{note.user.username}@{note.user.host} hit user ⚠️')
             logger.info('投稿のみを削除しました 🗑')
