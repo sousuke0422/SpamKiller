@@ -4,7 +4,7 @@
 from os import environ
 from os.path import dirname, join
 
-from mipac.utils.util   import MISSING
+from mipac.utils.util import MISSING
 from dotenv import load_dotenv
 from loguru import logger
 
@@ -13,7 +13,7 @@ load_dotenv(dotenv_path)
 logger.info('loading .env')
 
 
-def get_env(key: str, default = MISSING) -> str:
+def get_env(key: str, default=MISSING) -> str:
     value = environ.get(key)
 
     if value:
@@ -24,8 +24,9 @@ def get_env(key: str, default = MISSING) -> str:
 
     raise ValueError(f'{key} is not found in .env')
 
+
 URL = get_env('URL')
 TOKEN = get_env('TOKEN')
-
+USER_ACTION = get_env('USER_ACTION', 'suspend')
 
 logger.info(f'use: {URL}')
