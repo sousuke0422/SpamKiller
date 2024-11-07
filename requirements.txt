@@ -1,4 +1,7 @@
 loguru
-mipa==0.4.1
-mipac==0.6.3
+mipa==0.4.2
+mipac==0.7.4
 python-dotenv
+opencv-python
+qreader
+pyzbar  # qreaderの依存関係だけど一応明示しとく
