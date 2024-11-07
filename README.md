@@ -1,5 +1,20 @@
 # Spam Killer for Misskey
 
+## 依存関係
+
+### ArchLinux
+
+```
+pacman -S opencv zbar
+```
+### Ubuntu
+
+```
+apt install -y libopencv-dev libzbar0
+```
+
+## 実行方法
+
 ```bash
 python -m venv .venv
 
