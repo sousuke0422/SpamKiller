@@ -7,7 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 -->
-## [unreleased]
+## [0.2.0] - 2024-11-07
+
+### 🚀 Features
+
+- QRコード内のデータを確認するように (#11) ([cec679a](https://github.com/sousuke0422/SpamKiller/commit/cec679a7be59d76d72f9d6c631a22294fc60e17b))
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -62,7 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add pattern ([c97e2bb](https://github.com/sousuke0422/SpamKiller/commit/c97e2bbd8d268cd92d66fccb7733504347d920b1))
 - Changelog ([0df6ccc](https://github.com/sousuke0422/SpamKiller/commit/0df6ccc727683f64b6db426c8dbe4dad8ea4f198))
 
-[unreleased]: https://github.com/sousuke0422/SpamKiller/compare/0.1.2..HEAD
+[0.2.0]: https://github.com/sousuke0422/SpamKiller/compare/0.1.2..0.2.0
 [0.1.2]: https://github.com/sousuke0422/SpamKiller/compare/0.1.1..0.1.2
 [0.1.1]: https://github.com/sousuke0422/SpamKiller/compare/0.1.0..0.1.1
 
