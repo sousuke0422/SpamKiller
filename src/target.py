@@ -11,6 +11,7 @@ TARGETS: list[TTarget] = [
     # { 'key': 'xn--68j5e377y.com', 'count': 0, 'dry_run': False },
     {'key': '#鈴木哲哉', 'count': 0, 'dry_run': False},
     {'key': 'yip.su/25X8U6', 'count': 0, 'dry_run': False},
+    {'key': 'https://discord.gg/ctkp', 'count': 0, 'dry_run': False},
 
     # テスト用
     {'key': 'test', 'count': 0, 'dry_run': True},
