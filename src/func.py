@@ -41,4 +41,4 @@ async def spam_action(note: Note, client: ClientManager, target: TTarget) -> Non
             logger.success(f'@{note.user.username}@{note.user.host} hit user ⚠️')
             logger.info('投稿のみを削除しました 🗑')
     else:
-        logger.info('no action by dry_run')
+        logger.info('no action by dry_run 👀')
