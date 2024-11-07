@@ -34,6 +34,7 @@ async def main():
     if note.user.host and len(note.mentions) >= 2:
         logger.info(f'スパムチェック開始: {URL}/notes/{note.id}')
 
+        # TARGETSに含まれる文字列が含まれている場合
         for target in TARGETS:
             if note.text is None:
                 continue
@@ -42,6 +43,7 @@ async def main():
             if target['key'] in text:
                 logger.success(f'パターン一致: {target['key']}')
                 await spam_action(note, api, target)
+                # break
             elif len(note.user.username) == 10:
                 logger.warning(
                     f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️'
@@ -49,6 +51,7 @@ async def main():
 
     if 0 < len(note.mentions):
         for file in note.files:
+            logger.info(f'QR型スパムチェック開始: {URL}/notes/{note.id}')
             texts = await QRCodeChecker(file).check()
             # TARGETSに含まれる文字列が含まれている場合
             for target in TARGETS:

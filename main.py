@@ -33,6 +33,7 @@ class SpamKiller(Bot):
         if note.user.host and len(note.mentions) >= 2:
             logger.info(f'スパムチェック開始: {URL}/notes/{note.id}')
 
+            # TARGETSに含まれる文字列が含まれている場合
             for target in TARGETS:
                 if note.text is None:
                     continue
@@ -48,6 +49,7 @@ class SpamKiller(Bot):
 
         if 0 < len(note.mentions):
             for file in note.files:
+                logger.info(f'QR型スパムチェック開始: {URL}/notes/{note.id}')
                 texts = await QRCodeChecker(file).check()
                 # TARGETSに含まれる文字列が含まれている場合
                 for target in TARGETS:
