@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 -->
+## [unreleased]
+
+### ⚙️ Miscellaneous Tasks
+
+- Mipaとmipacのバージョンを更新 (#9) ([3480a4d](https://github.com/sousuke0422/SpamKiller/commit/3480a4dacd405bfdcab5412a62ac44f318fb76b4))
+
 ## [0.1.2] - 2024-10-09
 
 ### 📚 Documentation
@@ -56,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add pattern ([c97e2bb](https://github.com/sousuke0422/SpamKiller/commit/c97e2bbd8d268cd92d66fccb7733504347d920b1))
 - Changelog ([0df6ccc](https://github.com/sousuke0422/SpamKiller/commit/0df6ccc727683f64b6db426c8dbe4dad8ea4f198))
 
+[unreleased]: https://github.com/sousuke0422/SpamKiller/compare/0.1.2..HEAD
 [0.1.2]: https://github.com/sousuke0422/SpamKiller/compare/0.1.1..0.1.2
 [0.1.1]: https://github.com/sousuke0422/SpamKiller/compare/0.1.0..0.1.1
 
