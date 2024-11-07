@@ -23,7 +23,7 @@ async def spam_action(note: Note, client: ClientManager, target: TTarget) -> Non
         await note.api.action.delete()
         for i in note.file_ids:
             await client.drive.files.action.delete(file_id=i)
-            logger.info(f'{note.id} のファイル {i} を削除しました。')
+            logger.info(f'{note.id} のファイル {i} を削除しました。💥')
 
         found_user = await client.user.action.get(note.user.id)
         # 傾向が変わった際に変更
