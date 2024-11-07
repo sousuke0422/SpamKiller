@@ -10,6 +10,7 @@ from mipa.ext.commands.bot import Bot
 
 from src.env import URL, TOKEN
 from src.func import spam_action, text_helper
+from src.qrcode import QRCodeChecker
 from src.target import TARGETS
 
 
@@ -45,7 +46,17 @@ class SpamKiller(Bot):
                         f'spamの可能性があります: @{note.user.username}@{note.user.host} ⚠️'
                     )
 
+        if 0 < len(note.mentions):
+            for file in note.files:
+                texts = await QRCodeChecker(file).check()
+                # TARGETSに含まれる文字列が含まれている場合
+                for target in TARGETS:
+                    if any(target['key'] in text for text in texts if isinstance(text, str)):
+                        logger.success(f'QRコードにパターン一致: {target['key']}')
+                        await spam_action(note, self.client, target)
+                        break
 
 if __name__ == '__main__':
+    
     bot = SpamKiller()
     asyncio.run(bot.start(f'{URL}', TOKEN))

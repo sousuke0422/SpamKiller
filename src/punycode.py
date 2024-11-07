@@ -19,7 +19,7 @@ def convert_punycode_to_unicode(input_string: str) -> str:
 
     return input_string
 
-
-# input_string = "This is a punycode example: xn--fsq@xn--fsq.com"
-# converted_string = convert_punycode_to_unicode(input_string)
-# print(converted_string)
+if __name__ == '__main__':
+    input_string = "This is a punycode example: xn--fsq@xn--fsq.com"
+    converted_string = convert_punycode_to_unicode(input_string)
+    print(converted_string)
